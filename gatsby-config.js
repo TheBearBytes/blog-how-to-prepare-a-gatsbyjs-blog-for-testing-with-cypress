@@ -16,7 +16,9 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: process.env.GATSBY_TEST === "cypress"
+          ? `${__dirname}/cypress/fixtures/blog`
+          : `${__dirname}/content/blog`,
         name: `blog`,
       },
     },
